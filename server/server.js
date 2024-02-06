@@ -77,6 +77,79 @@ async function fetchQuestionFromAPI(category, difficulty) {
   }
 }
 
+// Get user from database
+app.get("/users", (req, res) => {
+  try {
+    // Get a user by username (/user?username=name)
+    if (req.query.username) {
+      let user = db.prepare(`SELECT * FROM users WHERE username = ?`).all(req.query.username);
+      res.status(200).json(user);
+      return;
+    }
+    // Get all users in the database
+    let users = db.prepare(`SELECT * FROM users`).all();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
+// Add a new user to the database
+// req.body =
+// {
+// "username": ""
+// "password": ""
+// }
+app.post("/users", (req, res) => {
+  try {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    // Check if the username already exists
+    const checkUsernameExists = db.prepare(`SELECT * FROM users WHERE username = ?`).get(username);
+    if (checkUsernameExists) {
+      // Username already exists so return an error
+      res.status(400).json({ error: "Username already exists" });
+      return;
+    }
+
+    // Run SQL statement to insert a new user - ??'s are replaced by values in .run
+    const newUser = db
+      .prepare(
+        `INSERT INTO users (username, password, generalHighScore, filmHighScore, musicHighScore, sportHighScore, historyHighScore, geographyHighScore) VALUES (?,?,?,?,?,?,?,?)`
+      )
+      .run(username, password, 0, 0, 0, 0, 0, 0); // No high scores yet so set to 0
+    res.status(200).json({ response: newUser });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
+// Update user high score for a quiz in the database
+app.put("/users/:username/:quiz/:score", (req, res) => {
+  try {
+    const username = req.params.username;
+    const quiz = req.params.quiz;
+    const score = req.params.score;
+
+    const updateUserScore = db.prepare(`UPDATE users SET ${quiz} = ? WHERE username = ?`).run(score, username);
+    res.status(200).json({ response: updateUserScore });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
+// Delete user from database
+app.delete("/users/:username", (req, res) => {
+  try {
+    const username = req.params.username;
+    const deletedUser = db.prepare(`DELETE FROM users WHERE username = ?`).run(username);
+    res.status(200).json({ response: deletedUser });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
 // Server listening on defined port
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
