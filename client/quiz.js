@@ -35,7 +35,26 @@ async function displayQuestion() {
   answer4ButtonTag.textContent = question.incorrectAnswers[2];
 
   // Answer buttons
+  answer1ButtonTag.addEventListener("click",(event)=>{
+    event.preventDefault();
+    console.log("Answer1")
+  })
+  answer2ButtonTag.addEventListener("click",(event)=>{
+    event.preventDefault();
+    console.log("Answer2")
+  })
+  answer3ButtonTag.addEventListener("click",(event)=>{
+    event.preventDefault();
+    console.log("Answer3")
+  })
+  answer4ButtonTag.addEventListener("click",(event)=>{
+    event.preventDefault();
+    console.log("Answer4")
+  })
 
+
+
+  
   // Add elements to the display
   questionContainer.appendChild(questionNumH3Tag);
   questionContainer.appendChild(questionH2Tag);
