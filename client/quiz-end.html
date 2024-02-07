@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style-quiz-end.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap" />
+    <script type="module" src="/quiz-end.js" defer></script>
     <link
       rel="icon"
       type="favicon.ico"
@@ -13,20 +16,20 @@
     <title>The General Knowledge Quiz</title>
   </head>
   <body>
-    <h1>quiz</h1>
-
-    <div class="end-quiz-container">
-      <div class="end-quiz-header">
-        <h2>Game Over</h2>
-        <h3>Correct Answers: 8 out of 10</h3>
-        <h3>Leaderboard Position: 5th</h3>
+    <header>
+      <p id="question-category">Category:</p>
+      <h1>The General Knowledge Quiz</h1>
+      <div class="exit-button-container">
+        <button id="exit-button">Exit</button>
       </div>
+    </header>
 
-      <div class="end-quiz-buttons"></div>
-    </div>
-    <a href="index.html">
-      <button>back to main menu</button>
-    </a>
+    <main>
+      <h2>Game Over</h2>
+      <h2 id="correct-answers">Correct Answers: 0</h2>
+      <h2 id="leaderboard-position">Leaderboard Position: 0</h2>
+      <button id="return-to-main-button">Return To Main Menu</button>
+    </main>
 
     <footer>
       <p>The General Knowledge Quiz</p>
