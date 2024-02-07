@@ -30,48 +30,10 @@ async function displayQuestion() {
   questionNumH3Tag.textContent = "Question #1";
   questionH2Tag.textContent = question.question.text;
 
-  // Randomise order of answer buttons
-  // Store each button into an array to iterate through
+  // Store each button into an array to iterate through and assign correct and incorrect answers
   const answerButtons = [answer1ButtonTag, answer2ButtonTag, answer3ButtonTag, answer4ButtonTag];
-  // Select a random button index to be the answer
-  const correctAnswerButtonIndex = Math.floor(Math.random() * answerButtons.length);
-  // Track index of incorrect answers (incorrect answers are stored in an array)
-  let incorrectAnswerIndex = 0;
-  // Iterate through each button
-  answerButtons.forEach((button, index) => {
-    if (index == correctAnswerButtonIndex) {
-      // This is the correct answer
-      button.id = "correct";
-      button.textContent = question.correctAnswer;
-    } else {
-      // This is an incorrect answer
-      button.id = "incorrect";
-      button.textContent = question.incorrectAnswers[incorrectAnswerIndex];
-      incorrectAnswerIndex++; // Increase index so we end up with 3 different incorrect answers
-    }
-  });
+  assignAnswerButtons(answerButtons, question);
 
-  // Answer buttons
-  answer1ButtonTag.addEventListener("click",(event)=>{
-    event.preventDefault();
-    console.log("Answer1")
-  })
-  answer2ButtonTag.addEventListener("click",(event)=>{
-    event.preventDefault();
-    console.log("Answer2")
-  })
-  answer3ButtonTag.addEventListener("click",(event)=>{
-    event.preventDefault();
-    console.log("Answer3")
-  })
-  answer4ButtonTag.addEventListener("click",(event)=>{
-    event.preventDefault();
-    console.log("Answer4")
-  })
-
-
-
-  
   // Add elements to the display
   questionContainer.appendChild(questionNumH3Tag);
   questionContainer.appendChild(questionH2Tag);
@@ -79,6 +41,35 @@ async function displayQuestion() {
   answersContainer.appendChild(answer2ButtonTag);
   answersContainer.appendChild(answer3ButtonTag);
   answersContainer.appendChild(answer4ButtonTag);
+}
+
+// Randomise order of answer buttons and give click listeners
+function assignAnswerButtons(answerButtons, question) {
+  // Select a random button index to be the answer
+  const correctAnswerButtonIndex = Math.floor(Math.random() * answerButtons.length);
+  // Track index of incorrect answers (incorrect answers are stored in an array of 3)
+  let incorrectAnswerIndex = 0;
+  // Iterate through each button
+  answerButtons.forEach((button, index) => {
+    if (index == correctAnswerButtonIndex) {
+      // This is the correct answer, clicking it will display a new question
+      button.textContent = question.correctAnswer;
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        displayQuestion();
+        console.log("Correct");
+      });
+    } else {
+      // This is an incorrect answer, clicking it will end the quiz
+      button.id = "incorrect";
+      button.textContent = question.incorrectAnswers[incorrectAnswerIndex];
+      incorrectAnswerIndex++; // Increase index so we end up with 3 different incorrect answers
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        console.log("Incorrect");
+      });
+    }
+  });
 }
 
 // Format category text to be displayed to screen
