@@ -29,10 +29,27 @@ async function displayQuestion() {
   questionCategory.textContent = "Category: " + formatCategoryText(question.category);
   questionNumH3Tag.textContent = "Question #1";
   questionH2Tag.textContent = question.question.text;
-  answer1ButtonTag.textContent = question.correctAnswer;
-  answer2ButtonTag.textContent = question.incorrectAnswers[0];
-  answer3ButtonTag.textContent = question.incorrectAnswers[1];
-  answer4ButtonTag.textContent = question.incorrectAnswers[2];
+
+  // Randomise order of answer buttons
+  // Store each button into an array to iterate through
+  const answerButtons = [answer1ButtonTag, answer2ButtonTag, answer3ButtonTag, answer4ButtonTag];
+  // Select a random button index to be the answer
+  const correctAnswerButtonIndex = Math.floor(Math.random() * answerButtons.length);
+  // Track index of incorrect answers (incorrect answers are stored in an array)
+  let incorrectAnswerIndex = 0;
+  // Iterate through each button
+  answerButtons.forEach((button, index) => {
+    if (index == correctAnswerButtonIndex) {
+      // This is the correct answer
+      button.id = "correct";
+      button.textContent = question.correctAnswer;
+    } else {
+      // This is an incorrect answer
+      button.id = "incorrect";
+      button.textContent = question.incorrectAnswers[incorrectAnswerIndex];
+      incorrectAnswerIndex++; // Increase index so we end up with 3 different incorrect answers
+    }
+  });
 
   // Answer buttons
 
