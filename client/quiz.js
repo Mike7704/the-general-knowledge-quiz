@@ -6,10 +6,16 @@ const exitButton = document.getElementById("exit-button");
 const baseURL = import.meta.env.VITE_ServerURL;
 
 let questionNumber = 0;
+// Test question category stored in local storage
+localStorage.setItem("categoryParam", "general_knowledge");
+localStorage.setItem("categoryText", "General Knowledge");
+const categoryParam = localStorage.getItem("categoryParam");
+const categoryText = localStorage.getItem("categoryText");
+questionCategory.textContent = `Category: ${categoryText}`;
 
 // Get a question from the server
 async function fetchQuestion() {
-  const question = await fetch(`${baseURL}/question?category=general_knowledge&difficulty=easy`);
+  const question = await fetch(`${baseURL}/question?category=${categoryParam}&difficulty=easy`);
   // Parse into an array
   return await question.json();
 }
@@ -32,7 +38,6 @@ async function displayQuestion() {
   const answer3ButtonTag = document.createElement("button");
   const answer4ButtonTag = document.createElement("button");
   // Assign text
-  questionCategory.textContent = "Category: " + formatCategoryText(question.category);
   questionNumH3Tag.textContent = `Question #${questionNumber}`;
   questionH2Tag.textContent = question.question.text;
 
@@ -102,13 +107,6 @@ function disableButtons(answerButtons) {
   answerButtons.forEach((button) => {
     button.disabled = true;
   });
-}
-
-// Format category text to be displayed to screen
-function formatCategoryText(text) {
-  return text
-    .replace(/_/g, " ") // Replace underscores with spaces
-    .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize first letter of each word
 }
 
 // Make exit button return to main menu when clicked
