@@ -56,8 +56,7 @@ function assignAnswerButtons(answerButtons, question) {
       button.textContent = question.correctAnswer;
       button.addEventListener("click", (event) => {
         event.preventDefault();
-        displayQuestion();
-        console.log("Correct");
+        correctAnswer(button);
       });
     } else {
       // This is an incorrect answer, clicking it will end the quiz
@@ -66,12 +65,23 @@ function assignAnswerButtons(answerButtons, question) {
       incorrectAnswerIndex++; // Increase index so we end up with 3 different incorrect answers
       button.addEventListener("click", (event) => {
         event.preventDefault();
-        console.log("Incorrect");
-      });
+        inCorrectAnswer(button);
+       });
     }
   });
 }
-
+function correctAnswer(button) {
+  button.style.backgroundColor = 'green'
+  setTimeout(() => {
+    displayQuestion()
+    },1000 )
+}
+function inCorrectAnswer(button) {
+  button.style.backgroundColor = 'red'
+  setTimeout(() => {
+    //make quiz end here
+     },1000 )
+}
 // Format category text to be displayed to screen
 function formatCategoryText(text) {
   return text
@@ -80,4 +90,4 @@ function formatCategoryText(text) {
 }
 
 displayQuestion();
-//this is a test
+
