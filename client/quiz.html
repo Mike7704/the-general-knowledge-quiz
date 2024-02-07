@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>leaderboard</h1>
-    <div class="quiz-menu-container">
-      <div class="quiz-category-buttons">
-          <button>Category 1</button>
-          <button>Category 2</button>
-          <button>Category 3</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style-quiz.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap" />
+    <script type="module" src="/quiz.js" defer></script>
+    <link
+      rel="icon"
+      type="favicon.ico"
+      href="https://static.vecteezy.com/system/resources/thumbnails/027/765/346/small/quiz-sign-mark-free-free-png.png"
+    />
+    <title>The General Knowledge Quiz</title>
+  </head>
+  <body>
+    <header>
+      <p id="question-category">Category:</p>
+      <h1>The General Knowledge Quiz</h1>
+      <div class="exit-button-container">
+        <button id="exit-button">Exit</button>
       </div>
+    </header>
+    <main>
+      <div id="question-container"></div>
+      <div id="answers-container"></div>
+    </main>
 
-      <button class="exit-button">Exit</button>
-
-      <h2 class="quiz-question">Quiz Question Goes Here?</h2>
-
-      <div class="answer-buttons">
-          <button>Option 1</button>
-          <button>Option 2</button>
-          <button>Option 3</button>
-          <button>Option 4</button>
-      </div>
-  </div>
-
-    <a href="index.html">
-      <button>back to main menu</button>
-    </a>
-
-    
-</body>
+    <footer>
+      <p>The General Knowledge Quiz</p>
+      <p>Created by Michael Cowley, Paul Iza and Dante</p>
+    </footer>
+  </body>
 </html>
