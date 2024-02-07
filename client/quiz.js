@@ -80,3 +80,4 @@ function formatCategoryText(text) {
 }
 
 displayQuestion();
+//this is a test
