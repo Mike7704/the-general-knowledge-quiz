@@ -71,7 +71,7 @@ main {
 }
 
 main .game-overview,
-main #return-to-main-button {
+main #return-to-main-button, #replay-quiz {
   display: flex;
   flex: 3;
   flex-direction: column;
@@ -86,6 +86,11 @@ main #return-to-main-button {
   margin-bottom: 25px;
   gap: 50px;
 }
+.quiz-buttons {
+  display: flex;
+
+}
+
 
 main #game-over {
   font-size: 60px;
@@ -95,7 +100,7 @@ main h2 {
   padding: 25px;
 }
 
-main #return-to-main-button {
+main #return-to-main-button, #replay-quiz {
   flex: 1;
   background-color: #4a47a3aa;
   font: inherit;
@@ -107,7 +112,7 @@ main #return-to-main-button {
   transition: background-color 0.3s;
 }
 
-main #return-to-main-button:hover {
+main #return-to-main-button:hover, #replay-quiz:hover {
   background-color: #2c2a6eaa;
 }
 
