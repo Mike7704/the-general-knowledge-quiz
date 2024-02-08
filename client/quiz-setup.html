@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style-quiz-setup.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap" />
+    <script type="module" src="/quiz-setup.js" defer></script>
     <link
       rel="icon"
       type="favicon.ico"
@@ -13,10 +16,28 @@
     <title>The General Knowledge Quiz</title>
   </head>
   <body>
-    <h1>Quiz</h1>
-    <a href="index.html">
-      <button>back to main menu</button>
-    </a>
+    <div class="bk-image-container">
+      <img src="/images/question-marks-bk.png" alt="Background Image" />
+    </div>
+    <main>
+      <h1>The General Knowledge Quiz</h1>
+      <h2>Categories:</h2>
+      <div class="top-row">
+        <button id="general-knowledge-button">General Knowledge</button>
+        <button id="film-tv-button">Film and TV</button>
+        <button id="sport-leisure-button">Sport and Leisure</button>
+      </div>
+      <div class="middle-row">
+        <button id="music-button">Music</button>
+        <button id="geography-button">Geography</button>
+        <button id="history-button">History</button>
+      </div>
+      <div class="bottom-row">
+        <div class="empty-space"></div>
+        <button id="back-button">Back</button>
+        <div class="empty-space"></div>
+      </div>
+    </main>
 
     <footer>
       <p>The General Knowledge Quiz</p>
