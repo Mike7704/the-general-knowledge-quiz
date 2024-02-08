@@ -66,6 +66,19 @@ main #error-message {
 }
 main #back-button {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #2c2a6eaa;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50px;
+  font-size: 30px;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 25px;
+  gap: 50px;
+  flex: 0;
+
   flex: 3;
   flex-direction: column;
   justify-content: center;
