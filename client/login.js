@@ -5,23 +5,25 @@ const backButton = document.getElementById("back-button");
 const baseURL = import.meta.env.VITE_ServerURL;
 
 // Listen to form login and register buttons
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
+function setupFormListener() {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  // Create a FormData object from the form
-  const formData = new FormData(form);
-  // Access the values of the username and password inputs
-  const usernameInput = formData.get("username");
-  const passwordInput = formData.get("password");
+    // Create a FormData object from the form
+    const formData = new FormData(form);
+    // Access the values of the username and password inputs
+    const usernameInput = formData.get("username");
+    const passwordInput = formData.get("password");
 
-  // The form uses 2 submit buttons so get the button clicked (login or register user)
-  const button = event.submitter.id;
-  if (button === "login-button") {
-    loginUser(usernameInput, passwordInput);
-  } else if (button === "register-button") {
-    createUser(formData);
-  }
-});
+    // The form uses 2 submit buttons so get the button clicked (login or register user)
+    const button = event.submitter.id;
+    if (button === "login-button") {
+      loginUser(usernameInput, passwordInput);
+    } else if (button === "register-button") {
+      createUser(formData);
+    }
+  });
+}
 
 // Check if the user has entered a username and password to login in with
 async function loginUser(usernameInput, passwordInput) {
@@ -69,8 +71,9 @@ async function fetchUser(usernameParam, passwordParam) {
 // Give each main menu button a listener to load a page
 function setupMenuButtons() {
   backButton.addEventListener("click", () => {
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
   });
 }
 
 setupMenuButtons();
+setupFormListener();

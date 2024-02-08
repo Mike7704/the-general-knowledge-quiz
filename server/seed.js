@@ -20,5 +20,8 @@ db.exec(`CREATE TABLE IF NOT EXISTS users (
 db.exec(`
     INSERT into users (username, password, generalHighScore, filmHighScore, musicHighScore, sportHighScore, historyHighScore, geographyHighScore)
     VALUES
-    ('Mike7704', 'Password123', 4, 3, 7, 8, 5, 1)
+    ('admin', 'admin123', 0, 0, 0, 0, 0, 0),
+    ('Mike7704', 'Password123', 2, 3, 4, 6, 5, 1),
+    ('Harry23', 'abc123', 0, 2, 0, 0, 0, 1),
+    ('John888', '12345', 3, 0, 0, 2, 0, 1)
 `);

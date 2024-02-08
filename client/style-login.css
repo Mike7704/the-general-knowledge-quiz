@@ -1,29 +1,3 @@
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: linear-gradient(to bottom right, #586dcc, #6d4596);
-  color: white;
-  font-family: "Titillium Web", sans-serif;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
-}
-
-.bk-image-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.bk-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 8%;
-}
-
 main {
   display: flex;
   flex: 1;
@@ -60,12 +34,4 @@ main #info-message {
 
 main #back-button {
   padding: 5px;
-}
-
-footer {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.3);
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 15px;
 }
