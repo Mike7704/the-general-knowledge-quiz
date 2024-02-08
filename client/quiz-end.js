@@ -3,6 +3,7 @@ const correctAnswers = document.getElementById("correct-answers");
 const leaderboardPosition = document.getElementById("leaderboard-position");
 const exitButton = document.getElementById("exit-button");
 const returnToMainMenuButton = document.getElementById("return-to-main-button");
+const replayQuizButton = document.getElementById("replay-quiz");
 
 function displayQuizInfo() {
   // Set category label
@@ -24,6 +25,9 @@ function setupExitButtons() {
 
   returnToMainMenuButton.addEventListener("click", () => {
     window.location.href = "index.html";
+  });
+  replayQuizButton.addEventListener("click", () => {
+    window.location.href = "quiz.html";
   });
 }
 
