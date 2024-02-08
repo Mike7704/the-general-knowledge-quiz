@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style-leaderboard.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap" />
+    <script type="module" src="/leaderboard.js" defer></script>
     <link
       rel="icon"
       type="favicon.ico"
       href="https://static.vecteezy.com/system/resources/thumbnails/027/765/346/small/quiz-sign-mark-free-free-png.png"
     />
     <title>The General Knowledge Quiz</title>
-</head>
-<body>
-    <h1>Quiz</h1>
-    <body>
+  </head>
+  <body>
+    <div class="bk-image-container">
+      <img src="/images/question-marks-bk.png" alt="Background Image" />
+    </div>
 
-      <header>
-      </header>
-  
+    <main>
+      <h1>The General Knowledge Quiz</h1>
       <div class="leaderboard-container">
-          <div class="leaderboard-header">
-              <h1>Leaderboard</h1>
-              <button>(button) Sort High to Low</button>
-          </div>
-  
-          <div class="quiz-category">
-              <div>(p)</div>
-              <div>(p)</div>
-              <div>(p)</div>
-              <div>(p)</div>
-              <div>(p)</div>
-              <div>(p)</div>
-          </div>
-  
-          <table class="leaderboard-table">
-              <thead>
-                  <tr>
-                      <th>Rank</th>
-                      <th>Username</th>
-                      <th>Score</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>1</td>
-                      <td>User1</td>
-                      <td>100</td>
-                  </tr>
-                  <tr>
-                      <td>2</td>
-                      <td>User2</td>
-                      <td>95</td>
-                  </tr>
-              </tbody>
-          </table>
+        <div class="leaderboard-header">
+          <h1>Leaderboard</h1>
+          <button>(button) Sort High to Low</button>
+        </div>
+
+        <div class="quiz-category">
+          <div>(p)</div>
+          <div>(p)</div>
+          <div>(p)</div>
+          <div>(p)</div>
+          <div>(p)</div>
+          <div>(p)</div>
+        </div>
+
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Username</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>User1</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>User2</td>
+              <td>95</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    <a href="index.html">
-      <button>back to main menu</button>
-    </a>
+    </main>
+
+    <button id="back-button">Back</button>
 
     <footer>
-        <p>The General Knowledge Quiz</p>
-        <p>Created by Michael Cowley, Paul Iza and Dante</p>
-      </footer>
-</body>
+      <p>The General Knowledge Quiz</p>
+      <p>Created by Michael Cowley, Paul Iza and Dante</p>
+    </footer>
+  </body>
 </html>
