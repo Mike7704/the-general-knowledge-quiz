@@ -29,8 +29,9 @@ async function loginUser(usernameInput, passwordInput) {
   // Has the server found and returned the user?
   if (user.length > 0) {
     // Login the user
-    let username = usernameInput;
     infoMessage.textContent = `Signed in as: ${usernameInput}`;
+    // Store account info in local storage
+    localStorage.setItem("userAccount", JSON.stringify(user[0]));
   } else {
     // Incorrect username or password
     infoMessage.textContent = "Incorrect username or password";
