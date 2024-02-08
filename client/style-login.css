@@ -54,7 +54,7 @@ main form {
   gap: 10px;
 }
 
-main #error-message {
+main #info-message {
   text-align: center;
 }
 
