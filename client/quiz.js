@@ -6,9 +6,7 @@ const exitButton = document.getElementById("exit-button");
 const baseURL = import.meta.env.VITE_ServerURL;
 
 let questionNumber = 0;
-// Test question category stored in local storage
-localStorage.setItem("categoryParam", "general_knowledge");
-localStorage.setItem("categoryText", "General Knowledge");
+// Load category from local storage
 const categoryParam = localStorage.getItem("categoryParam");
 const categoryText = localStorage.getItem("categoryText");
 questionCategory.textContent = `Category: ${categoryText}`;
@@ -94,7 +92,7 @@ function correctAnswer(button) {
 
 // Show the user the correct answer and end the quiz
 function incorrectAnswer(button, correctAnswerButton) {
-  button.style.backgroundColor = "red";
+  button.style.backgroundColor = "darkred";
   correctAnswerButton.style.backgroundColor = "green";
   setTimeout(() => {
     // Make quiz end here
