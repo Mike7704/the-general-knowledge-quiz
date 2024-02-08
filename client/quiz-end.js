@@ -17,7 +17,7 @@ function displayQuizInfo() {
 }
 
 // Make exit button return to main menu when clicked
-function setupExitButton() {
+function setupExitButtons() {
   exitButton.addEventListener("click", () => {
     window.location.href = "index.html";
   });
@@ -27,5 +27,5 @@ function setupExitButton() {
   });
 }
 
-setupExitButton();
+setupExitButtons();
 displayQuizInfo();

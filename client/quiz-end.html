@@ -16,6 +16,10 @@
     <title>The General Knowledge Quiz</title>
   </head>
   <body>
+    <div class="bk-image-container">
+      <img src="/images/question-marks-bk.png" alt="Background Image" />
+    </div>
+
     <header>
       <p id="question-category">Category:</p>
       <h1>The General Knowledge Quiz</h1>
@@ -25,9 +29,11 @@
     </header>
 
     <main>
-      <h2>Game Over</h2>
-      <h2 id="correct-answers">Correct Answers: 0</h2>
-      <h2 id="leaderboard-position">Leaderboard Position: 0</h2>
+      <div class="game-overview">
+        <h2 id="game-over">Game Over</h2>
+        <h2 id="correct-answers">Correct Answers: 0</h2>
+        <h2 id="leaderboard-position">Leaderboard Position: 0</h2>
+      </div>
       <button id="return-to-main-button">Return To Main Menu</button>
     </main>
 
