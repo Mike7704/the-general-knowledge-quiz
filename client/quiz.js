@@ -111,7 +111,7 @@ function incorrectAnswer(button, correctAnswerButton) {
   correctAnswerButton.style.backgroundColor = "green";
   setTimeout(() => {
     // Make quiz end here
-    window.location.href = "quiz-end.html";
+    window.location.href = "./quiz-end.html";
   }, 2000);
 }
 
@@ -125,7 +125,7 @@ function disableButtons(answerButtons) {
 // Make exit button return to main menu when clicked
 function setupExitButton() {
   exitButton.addEventListener("click", () => {
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
   });
 }
 

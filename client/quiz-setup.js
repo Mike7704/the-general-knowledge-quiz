@@ -12,41 +12,41 @@ function setupMenuButtons() {
   generalKnowledgeButton.addEventListener("click", () => {
     localStorage.setItem("categoryParam", "general_knowledge");
     localStorage.setItem("categoryText", "General Knowledge");
-    window.location.href = "quiz.html";
+    window.location.href = "./quiz.html";
   });
 
   filmAndTvButton.addEventListener("click", () => {
     localStorage.setItem("categoryParam", "film_and_tv");
     localStorage.setItem("categoryText", "Film and TV");
-    window.location.href = "quiz.html";
+    window.location.href = "./quiz.html";
   });
 
   sportAndLeisureButton.addEventListener("click", () => {
     localStorage.setItem("categoryParam", "sport_and_leisure");
     localStorage.setItem("categoryText", "Sport and Leisure");
-    window.location.href = "quiz.html";
+    window.location.href = "./quiz.html";
   });
 
   musicButton.addEventListener("click", () => {
     localStorage.setItem("categoryParam", "music");
     localStorage.setItem("categoryText", "Music");
-    window.location.href = "quiz.html";
+    window.location.href = "./quiz.html";
   });
 
   geographyButton.addEventListener("click", () => {
     localStorage.setItem("categoryParam", "geography");
     localStorage.setItem("categoryText", "Geography");
-    window.location.href = "quiz.html";
+    window.location.href = "./quiz.html";
   });
 
   historyButton.addEventListener("click", () => {
     localStorage.setItem("categoryParam", "history");
     localStorage.setItem("categoryText", "History");
-    window.location.href = "quiz.html";
+    window.location.href = "./quiz.html";
   });
 
   backButton.addEventListener("click", () => {
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
   });
 }
 

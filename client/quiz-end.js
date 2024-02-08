@@ -12,9 +12,8 @@ function displayQuizInfo() {
   const categoryText = localStorage.getItem("categoryText");
   questionCategory.textContent = `Category: ${categoryText}`;
 
+  // Get and show number of correct answers from local storage
   const numOfCorrectAnswers = localStorage.getItem("correctAnswers");
-
-  // Show number of correct answers
   correctAnswers.textContent = `Correct Answers: ${numOfCorrectAnswers}`;
 
   const userAccount = JSON.parse(localStorage.getItem("userAccount"));
@@ -23,52 +22,22 @@ function displayQuizInfo() {
     // Show high score for played quiz category and update if beaten
     switch (categoryText) {
       case "General Knowledge":
-        if (numOfCorrectAnswers > userAccount.generalHighScore) {
-          updateHighScore(userAccount.username, "generalHighScore", numOfCorrectAnswers);
-          userAccount.generalHighScore = numOfCorrectAnswers;
-          localStorage.setItem("userAccount", JSON.stringify(userAccount));
-        }
-        highScore.textContent = `High Score: ${userAccount.generalHighScore}`;
+        updateHighScoreForQuiz(userAccount, "general", numOfCorrectAnswers);
         break;
       case "Film and TV":
-        if (numOfCorrectAnswers > userAccount.filmHighScore) {
-          updateHighScore(userAccount.username, "filmHighScore", numOfCorrectAnswers);
-          userAccount.filmHighScore = numOfCorrectAnswers;
-          localStorage.setItem("userAccount", JSON.stringify(userAccount));
-        }
-        highScore.textContent = `High Score: ${userAccount.filmHighScore}`;
+        updateHighScoreForQuiz(userAccount, "film", numOfCorrectAnswers);
         break;
       case "Sport and Leisure":
-        if (numOfCorrectAnswers > userAccount.sportHighScore) {
-          updateHighScore(userAccount.username, "sportHighScore", numOfCorrectAnswers);
-          userAccount.sportHighScore = numOfCorrectAnswers;
-          localStorage.setItem("userAccount", JSON.stringify(userAccount));
-        }
-        highScore.textContent = `High Score: ${userAccount.sportHighScore}`;
+        updateHighScoreForQuiz(userAccount, "sport", numOfCorrectAnswers);
         break;
       case "Music":
-        if (numOfCorrectAnswers > userAccount.musicHighScore) {
-          updateHighScore(userAccount.username, "musicHighScore", numOfCorrectAnswers);
-          userAccount.musicHighScore = numOfCorrectAnswers;
-          localStorage.setItem("userAccount", JSON.stringify(userAccount));
-        }
-        highScore.textContent = `High Score: ${userAccount.musicHighScore}`;
+        updateHighScoreForQuiz(userAccount, "music", numOfCorrectAnswers);
         break;
       case "Geography":
-        if (numOfCorrectAnswers > userAccount.geographyHighScore) {
-          updateHighScore(userAccount.username, "geographyHighScore", numOfCorrectAnswers);
-          userAccount.geographyHighScore = numOfCorrectAnswers;
-          localStorage.setItem("userAccount", JSON.stringify(userAccount));
-        }
-        highScore.textContent = `High Score: ${userAccount.geographyHighScore}`;
+        updateHighScoreForQuiz(userAccount, "geography", numOfCorrectAnswers);
         break;
       case "History":
-        if (numOfCorrectAnswers > userAccount.historyHighScore) {
-          updateHighScore(userAccount.username, "historyHighScore", numOfCorrectAnswers);
-          userAccount.historyHighScore = numOfCorrectAnswers;
-          localStorage.setItem("userAccount", JSON.stringify(userAccount));
-        }
-        highScore.textContent = `High Score: ${userAccount.historyHighScore}`;
+        updateHighScoreForQuiz(userAccount, "history", numOfCorrectAnswers);
         break;
       default:
         highScore.textContent = "High Score: Error";
@@ -79,14 +48,26 @@ function displayQuizInfo() {
   }
 }
 
-// Update high score for quiz
-async function updateHighScore(username, quizCategory, correctAnswers) {
+// Update high score for current quiz if new score is higher
+function updateHighScoreForQuiz(userAccount, category, correctAnswers) {
+  if (correctAnswers > userAccount[`${category}HighScore`]) {
+    // Update database
+    updateHighScoreInDatabase(userAccount.username, `${category}HighScore`, correctAnswers);
+    // Update local storage
+    userAccount[`${category}HighScore`] = correctAnswers;
+    localStorage.setItem("userAccount", JSON.stringify(userAccount));
+  }
+  // Display high score
+  highScore.textContent = `High Score: ${userAccount[`${category}HighScore`]}`;
+}
+
+// Update user's high score for quiz in the database
+async function updateHighScoreInDatabase(username, quizCategory, correctAnswers) {
   const data = {
     username: username,
     quizCategory: quizCategory,
     correctAnswers: correctAnswers,
   };
-
   const result = await fetch(`${baseURL}/users/${username}/${quizCategory}/${correctAnswers}`, {
     method: "PUT",
     headers: {
@@ -94,9 +75,7 @@ async function updateHighScore(username, quizCategory, correctAnswers) {
     },
     body: JSON.stringify(data),
   });
-  if (result.ok) {
-    //
-  } else {
+  if (!result.ok) {
     console.error("Failed to update high score", response.status);
   }
 }
@@ -104,14 +83,14 @@ async function updateHighScore(username, quizCategory, correctAnswers) {
 // Make exit button return to main menu when clicked
 function setupExitButtons() {
   exitButton.addEventListener("click", () => {
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
   });
 
   returnToMainMenuButton.addEventListener("click", () => {
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
   });
   replayQuizButton.addEventListener("click", () => {
-    window.location.href = "quiz.html";
+    window.location.href = "./quiz.html";
   });
 }
 
