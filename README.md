@@ -13,7 +13,7 @@ The project is deployed on Render and can be viewed [here](https://the-general-k
 #### Project management:
 
 - **Trello:** We created a [Trello board](https://trello.com/b/VLkG0dts/the-general-knowledge-quiz) to organise tasks and monitor our progress throughout development.
-- **Shared Programming:** We utilised shared programming to collaborate on code development in real-time, ensuring all team members were involved and allow sharing of knowledge.
+- **Shared Programming:** We utilised shared programming to collaborate on code development in real-time, ensuring all team members were involved and encourage sharing of knowledge.
 - **Git Branches:** We frequently used Git branches to push code changes so we could all access the latest code additions and collaborate seamlessly.
 
 ## About the project
@@ -52,7 +52,7 @@ The aim of this project was to collaborate as a team and create a full stack web
 #### Future additions:
 
 - Enhance the quiz experience by allowing users to select the difficulty and access abilities such as 50/50 or hints.
-- Introduce additional quiz modes such as timed challenges and limitted lives for increased playability.
+- Introduce additional quiz modes such as timed challenges and limited lives for increased playability.
 - Improve account features, such as being able to delete an account.
 - Make passwords and data storage secure to ensure user information is protected.
 
