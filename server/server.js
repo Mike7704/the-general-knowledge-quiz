@@ -77,18 +77,25 @@ async function fetchQuestionFromAPI(category, difficulty) {
   }
 }
 
-// Get user from database
+// Get a user by username and password (/users?username=username&password=password)
 app.get("/users", (req, res) => {
   try {
-    // Get a user by username (/user?username=name)
-    if (req.query.username) {
-      let user = db.prepare(`SELECT * FROM users WHERE username = ?`).all(req.query.username);
+    const username = req.query.username;
+    const password = req.query.password;
+    // Check for username and password paramaters
+    if (username && password) {
+      // Admin can fetch all users
+      if (username === "admin" && password === "admin123") {
+        let users = db.prepare(`SELECT * FROM users`).all();
+        res.status(200).json(users);
+        return;
+      }
+      // Try find username with matching password
+      let user = db.prepare(`SELECT * FROM users WHERE username = ? AND password = ?`).all(username, password);
       res.status(200).json(user);
       return;
     }
-    // Get all users in the database
-    let users = db.prepare(`SELECT * FROM users`).all();
-    res.status(200).json(users);
+    res.status(400).json({ error: "Username and password required" });
   } catch (error) {
     res.status(500).json({ error: error });
   }

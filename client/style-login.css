@@ -61,7 +61,7 @@ main form {
   background-color: green;
 }
 
-main #error-message {
+main #info-message {
   text-align: center;
 }
 main #back-button {
