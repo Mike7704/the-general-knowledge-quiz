@@ -6,14 +6,29 @@ const exitButton = document.getElementById("exit-button");
 const baseURL = import.meta.env.VITE_ServerURL;
 
 let questionNumber = 0;
-// Load category from local storage
-const categoryParam = localStorage.getItem("categoryParam");
-const categoryText = localStorage.getItem("categoryText");
-questionCategory.textContent = `Category: ${categoryText}`;
+let categoryParam;
+let categoryText;
+
+// Load category from local storage and display it
+function getLocalStorage() {
+  categoryParam = localStorage.getItem("categoryParam");
+  categoryText = localStorage.getItem("categoryText");
+  questionCategory.textContent = `Category: ${categoryText}`;
+}
 
 // Get a question from the server
 async function fetchQuestion() {
-  const question = await fetch(`${baseURL}/question?category=${categoryParam}&difficulty=easy`);
+  let difficulty = "easy";
+  // 25% chance of fetching a medium difficulty question
+  if (Math.random() <= 0.25) {
+    difficulty = "medium";
+  }
+  // 5% chance of fetching a hard difficulty question
+  if (Math.random() <= 0.05) {
+    difficulty = "hard";
+  }
+
+  const question = await fetch(`${baseURL}/question?category=${categoryParam}&difficulty=${difficulty}`);
   // Parse into an array
   return await question.json();
 }
@@ -114,5 +129,6 @@ function setupExitButton() {
   });
 }
 
+getLocalStorage();
 setupExitButton();
 displayQuestion();
