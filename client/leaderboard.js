@@ -1,7 +1,7 @@
 const usersContainer = document.getElementById("users-container");
 const backButton = document.getElementById("back-button");
 
-const baseURL = await import.meta.env.VITE_ServerURL;
+const baseURL = import.meta.env.VITE_ServerURL;
 
 // Get users from database
 async function fetchUsers() {
