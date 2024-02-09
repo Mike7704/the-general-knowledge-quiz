@@ -9,7 +9,7 @@ main {
 main h1 {
   text-align: center;
   font-size: 75px;
-  margin: 35px 35px 7% 35px;
+  margin: 35px 35px 150px 35px;
 }
 
 main button {
@@ -30,4 +30,17 @@ main button {
 
 main button:hover {
   background-color: #2c2a6eaa;
+}
+
+@media screen and (max-width: 850px) {
+  main h1 {
+    text-align: center;
+    font-size: 65px;
+  }
+
+  main button {
+    font-size: 35px;
+    width: 80%;
+    min-width: 250px;
+  }
 }
