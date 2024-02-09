@@ -8,46 +8,87 @@ main {
 
 main h1 {
   text-align: center;
-  font-size: 50px;
+  font-size: 75px;
   margin: 35px 35px 0px 35px;
 }
 
 main .leaderboard-container {
   display: flex;
-  flex: 1;
+  flex: 11;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #2c2a6eaa;
   border: 2px solid rgba(255, 255, 255, 0.7);
   border-radius: 50px;
-  font-size: 45px;
-  text-align: center;
   padding: 25px;
-  margin-bottom: 25px;
-  gap: 10px;
+  margin: 25px 0px 25px 0px;
+  gap: 25px;
+  overflow-x: auto;
 }
-main #back-button {
+
+main .leaderboard-container h2 {
+  font-size: 45px;
+}
+
+main .leaderboard-container .headers-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+main .leaderboard-container #users-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  flex: 1;
+  width: 100%;
+  font-size: 25px;
+  gap: 10px;
+}
+
+main .leaderboard-container #users-container .user-container {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  background-color: #2c2a6eaa;
+}
+
+main .leaderboard-container .headers-container p,
+main .leaderboard-container #users-container .user-container p {
+  flex: 1;
+  text-align: center;
+}
+
+main #back-button {
+  flex: 1;
+  background-color: #4a47a3aa;
   border: 2px solid rgba(255, 255, 255, 0.7);
   border-radius: 50px;
-  font-size: 40px;
-  text-align: center;
-  padding: 10px;
-  margin-bottom: 25px;
-  gap: 50px;
-  flex: 1;
+  font: inherit;
+  font-size: 45px;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
   color: white;
+  min-width: 315px;
   cursor: pointer;
-  margin-bottom: 0px;
   transition: background-color 0.3s;
+  padding: 25px;
 }
 
 main #back-button:hover {
   background-color: #2c2a6eaa;
+}
+
+@media screen and (max-width: 850px) {
+  main h1 {
+    font-size: 50px;
+  }
+
+  main .leaderboard-container h2 {
+    font-size: 35px;
+  }
+
+  main button,
+  main #back-button {
+    font-size: 35px;
+    min-width: 0px;
+  }
 }
