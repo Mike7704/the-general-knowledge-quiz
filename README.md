@@ -53,7 +53,7 @@ The aim of this project was to collaborate as a team and create a full stack web
 
 - Enhance the quiz experience by allowing users to select the difficulty and access abilities such as 50/50 or hints.
 - Introduce additional quiz modes such as timed challenges and limited lives for increased playability.
-- Improve account features, such as being able to delete an account.
+- Allow users to sort the leaderboard by high scores for each quiz.
 - Make passwords and data storage secure to ensure user information is protected.
 
 ## Installation

@@ -1,8 +1,14 @@
 const form = document.getElementById("form");
+const registerButton = document.getElementById("register-button");
+const loginButton = document.getElementById("login-button");
+const logoutButton = document.getElementById("logout-button");
+const deleteButton = document.getElementById("delete-button");
 const infoMessage = document.getElementById("info-message");
 const backButton = document.getElementById("back-button");
 
 const baseURL = import.meta.env.VITE_ServerURL;
+
+let userAccount = JSON.parse(localStorage.getItem("userAccount"));
 
 // Listen to form login and register buttons
 function setupFormListener() {
@@ -24,19 +30,55 @@ function setupFormListener() {
     }
   });
 }
-
 // Check if the user has entered a username and password to login in with
 async function loginUser(usernameInput, passwordInput) {
   let user = await fetchUser(usernameInput, passwordInput);
   // Has the server found and returned the user?
   if (user.length > 0) {
     // Login the user
-    infoMessage.textContent = `Signed in as: ${usernameInput}`;
+    infoMessage.textContent = `Logged in as: ${usernameInput}`;
     // Store account info in local storage
     localStorage.setItem("userAccount", JSON.stringify(user[0]));
+    userAccount = JSON.parse(localStorage.getItem("userAccount"));
+    // Show delete and logout button
+    registerButton.disabled = true;
+    loginButton.disabled = true;
+    deleteButton.style.visibility = "visible";
+    logoutButton.style.visibility = "visible";
   } else {
     // Incorrect username or password
     infoMessage.textContent = "Incorrect username or password";
+  }
+}
+
+// Logout user by setting local storage to null
+function logoutUser() {
+  // Hide logout button
+  localStorage.setItem("userAccount", null);
+  registerButton.disabled = false;
+  loginButton.disabled = false;
+  deleteButton.style.visibility = "hidden";
+  logoutButton.style.visibility = "hidden";
+  infoMessage.textContent = `You have been logged out`;
+}
+
+// Display info depending on user login state
+function checkUserIsLoggedIn() {
+  infoMessage.style.visibility = "visible";
+  // User is not logged in so hide logout button
+  if (!userAccount || userAccount === null || userAccount === undefined) {
+    registerButton.disabled = false;
+    loginButton.disabled = false;
+    deleteButton.style.visibility = "hidden";
+    logoutButton.style.visibility = "hidden";
+  }
+  // User is logged in so show who they are signed in as
+  else {
+    registerButton.disabled = true;
+    loginButton.disabled = true;
+    deleteButton.style.visibility = "visible";
+    logoutButton.style.visibility = "visible";
+    infoMessage.textContent = `Logged in as: ${userAccount.username}`;
   }
 }
 
@@ -54,10 +96,24 @@ async function createUser(formData) {
     body: JSON.stringify(userData),
   });
   if (response.ok) {
-    infoMessage.textContent = "Account successfully created";
+    infoMessage.textContent = "Account successfully created, please now login";
   } else {
     infoMessage.textContent = "Username already exists";
     console.error("Failed to create user", response.status);
+  }
+}
+
+// Delete user account from the database
+async function deleteUser() {
+  // Need username and password to delete the account
+  const result = await fetch(`${baseURL}/users/${userAccount.username}/${userAccount.password}`, {
+    method: "DELETE",
+  });
+  if (result.ok) {
+    logoutUser();
+    infoMessage.textContent = "Account successfully deleted, you have been logged out";
+  } else {
+    console.error("Failed to delete account", response.status);
   }
 }
 
@@ -68,8 +124,16 @@ async function fetchUser(usernameParam, passwordParam) {
   return await user.json();
 }
 
-// Give each main menu button a listener to load a page
+// Give each menu button a listener
 function setupMenuButtons() {
+  logoutButton.addEventListener("click", () => {
+    logoutUser();
+  });
+
+  deleteButton.addEventListener("click", () => {
+    deleteUser();
+  });
+
   backButton.addEventListener("click", () => {
     window.location.href = "./index.html";
   });
@@ -77,3 +141,4 @@ function setupMenuButtons() {
 
 setupMenuButtons();
 setupFormListener();
+checkUserIsLoggedIn();
