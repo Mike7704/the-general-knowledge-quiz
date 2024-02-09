@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = 9465;
+const PORT = 9788;
 const db = new Database("database.db");
 
 // The Trivia API for fetching questions

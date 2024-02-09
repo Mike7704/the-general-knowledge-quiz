@@ -5,7 +5,7 @@ const exitButton = document.getElementById("exit-button");
 const returnToMainMenuButton = document.getElementById("return-to-main-button");
 const replayQuizButton = document.getElementById("replay-quiz");
 
-const baseURL = await import.meta.env.VITE_ServerURL;
+const baseURL = import.meta.env.VITE_ServerURL;
 
 function displayQuizInfo() {
   // Set category label
