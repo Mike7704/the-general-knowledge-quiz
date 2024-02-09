@@ -56,3 +56,32 @@ main .empty-space {
 main #back-button {
   margin-bottom: 0px;
 }
+
+@media screen and (max-width: 850px) {
+  main h1 {
+    font-size: 50px;
+  }
+
+  main h2 {
+    font-size: 35px;
+  }
+
+  main .top-row,
+  main .middle-row,
+  main .bottom-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex: 1;
+    gap: 0px;
+  }
+
+  main button {
+    font-size: 35px;
+  }
+
+  main .empty-space {
+    flex: 1;
+    min-width: 250px;
+  }
+}
