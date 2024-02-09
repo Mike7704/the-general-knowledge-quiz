@@ -22,8 +22,7 @@ main button {
   color: white;
   padding: 25px;
   margin-bottom: 25px;
-  width: 40%;
-  min-width: 350px;
+  width: 670px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
