@@ -3,8 +3,7 @@ const questionContainer = document.getElementById("question-container");
 const answersContainer = document.getElementById("answers-container");
 const exitButton = document.getElementById("exit-button");
 
-// @ts-ignore
-const baseURL = import.meta.env.VITE_ServerURL;
+const baseURL = await import.meta.env.VITE_ServerURL;
 
 let questionNumber = 0;
 let categoryParam;
