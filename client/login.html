@@ -23,19 +23,31 @@
 
     <main>
       <h1>The General Knowledge Quiz</h1>
-      <form id="form">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" placeholder="Your username" required />
+      <div class="form-container">
+        <h2>Login</h2>
+        <form id="form">
+          <div class="form-username-container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Your username" required />
+          </div>
+          <div class="form-password-container">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Your (fake) password" required />
+          </div>
+          <div class="form-buttons-container">
+            <button type="sumbit" id="register-button">Register Account</button>
+            <button type="submit" id="login-button">Login</button>
+          </div>
+        </form>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Your (fake) password" required />
-
-        <button type="submit" id="login-button">Login</button>
-        <button type="sumbit" id="register-button">Register Account</button>
-      </form>
-
-      <p id="info-message">Login using your username and password</p>
-
+        <div class="account-container">
+          <p id="info-message">Login using your username and password</p>
+          <div class="account-buttons">
+            <button id="delete-button">Delete Account</button>
+            <button id="logout-button">Logout</button>
+          </div>
+        </div>
+      </div>
       <button id="back-button">Back</button>
     </main>
 

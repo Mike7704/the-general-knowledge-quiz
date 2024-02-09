@@ -147,10 +147,11 @@ app.put("/users/:username/:quiz/:score", (req, res) => {
 });
 
 // Delete user from database
-app.delete("/users/:username", (req, res) => {
+app.delete("/users/:username/:password", (req, res) => {
   try {
     const username = req.params.username;
-    const deletedUser = db.prepare(`DELETE FROM users WHERE username = ?`).run(username);
+    const password = req.params.password;
+    const deletedUser = db.prepare(`DELETE FROM users WHERE username = ? AND password = ?`).run(username, password);
     res.status(200).json({ response: deletedUser });
   } catch (error) {
     res.status(500).json({ error: error });
