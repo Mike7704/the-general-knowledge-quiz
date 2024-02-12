@@ -6,7 +6,7 @@ const deleteButton = document.getElementById("delete-button");
 const infoMessage = document.getElementById("info-message");
 const backButton = document.getElementById("back-button");
 
-const baseURL = import.meta.env.VITE_ServerURL;
+const baseURL = import.meta.env.VITE_SERVERURL;
 
 let userAccount = JSON.parse(localStorage.getItem("userAccount"));
 
