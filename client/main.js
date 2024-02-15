@@ -1,9 +1,11 @@
+// Seems only Main.js can import VITE_SERVERURL, so allow other .js files to import it from here
+export function getBaseURL() {
+  return import.meta.env.VITE_SERVERURL;
+}
+
 const playButton = document.getElementById("play-quiz");
 const leaderboardButton = document.getElementById("leaderboard");
 const loginButton = document.getElementById("login");
-
-const baseURL = import.meta.env.VITE_SERVERURL;
-console.log(baseURL);
 
 // Give each main menu button a listener to load a page
 function setupMenuButtons() {
@@ -20,4 +22,7 @@ function setupMenuButtons() {
   });
 }
 
-setupMenuButtons();
+// If these buttons exist, we must be on the main menu/page, so assign listeners
+if (playButton && leaderboardButton && loginButton) {
+  setupMenuButtons();
+}

@@ -1,3 +1,6 @@
+import { getBaseURL } from "./main.js";
+const baseURL = await getBaseURL();
+
 const form = document.getElementById("form");
 const registerButton = document.getElementById("register-button");
 const loginButton = document.getElementById("login-button");
@@ -5,8 +8,6 @@ const logoutButton = document.getElementById("logout-button");
 const deleteButton = document.getElementById("delete-button");
 const infoMessage = document.getElementById("info-message");
 const backButton = document.getElementById("back-button");
-
-const baseURL = import.meta.env.VITE_SERVERURL;
 
 let userAccount = JSON.parse(localStorage.getItem("userAccount"));
 

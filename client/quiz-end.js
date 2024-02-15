@@ -1,11 +1,12 @@
+import { getBaseURL } from "./main.js";
+const baseURL = await getBaseURL();
+
 const questionCategory = document.getElementById("question-category");
 const correctAnswers = document.getElementById("correct-answers");
 const highScore = document.getElementById("high-score");
 const exitButton = document.getElementById("exit-button");
 const returnToMainMenuButton = document.getElementById("return-to-main-button");
 const replayQuizButton = document.getElementById("replay-quiz");
-
-const baseURL = import.meta.env.VITE_SERVERURL;
 
 function displayQuizInfo() {
   // Set category label
