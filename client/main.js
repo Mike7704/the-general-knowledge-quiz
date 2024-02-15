@@ -1,6 +1,9 @@
 // Seems only Main.js can import VITE_SERVERURL, so allow other .js files to import it from here
 export function getBaseURL() {
-  return import.meta.env.VITE_SERVERURL;
+  //return import.meta.env.VITE_SERVERURL;
+
+  // Hardcoded server URL because can't get Render.com to work with VITE_SERVERURL
+  return "https://the-general-knowledge-quiz-server.onrender.com";
 }
 
 const playButton = document.getElementById("play-quiz");
