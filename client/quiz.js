@@ -1,9 +1,10 @@
+import { getBaseURL } from "./main.js";
+const baseURL = await getBaseURL();
+
 const questionCategory = document.getElementById("question-category");
 const questionContainer = document.getElementById("question-container");
 const answersContainer = document.getElementById("answers-container");
 const exitButton = document.getElementById("exit-button");
-
-const baseURL = import.meta.env.VITE_SERVERURL;
 
 let questionNumber = 0;
 let categoryParam;
