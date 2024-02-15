@@ -9,8 +9,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "devDependencies": {
-    "react-error-overlay": "^6.0.9",
-    "vite": "^5.0.8"
+  "overrides": {
+    "react-error-overlay": "6.0.9"
   }
 }
